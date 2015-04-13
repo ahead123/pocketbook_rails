@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="script.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="header">
+      <div class="container">
+      <div class="row">
+          <div class="col-md-10 col-md-offset-1" id="logoDiv">
+                <img src="http://goo.gl/0l22NZ" class="img-responsive center-block" width="50" height="50">
+                 <hr>
+                <% if current_user %>
+                    <p style="color: #fff;" class="pull-left">Welcome back! <%= current_user.name %></p>
+                    <p style="color: #fff;" class="pull-right"><%= link_to "Log out", logout_path, method: "delete" %></p>
+                <% end %>
+          </div>
+      </div>
+      </div>
+    </div>
+    
+<%= yield %>
+
+ <div class="footer">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <hr>
+                <ul class="text-center">
+                    <li><%= link_to "Contact", contact_path %></li>
+                    <li><%= link_to "Help Center", help_path %></li>
+                    <li><%= link_to "About", about_path %></li>
+                    <li><%= link_to "Sign up", new_user_path %></li>
+                </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>
